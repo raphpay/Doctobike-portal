@@ -1,5 +1,26 @@
+import useLoginScreen from "@/features/auth/hooks/useLoginScreen";
+import SecureTextInput from "@/shared/components/SecureTextInput";
+import { Button } from "@/shared/components/ui/button";
+import { Input } from "@/shared/components/ui/input";
+
 const LoginScreen = () => {
-  return <div>LoginScreen</div>;
+  const { setEmail, setPassword, tapOnLogin, tapOnSignUp } = useLoginScreen();
+
+  return (
+    <div className="flex flex-col gap-4">
+      <Input
+        placeholder="email@mail.com"
+        onChangeCapture={(e) => setEmail(e.currentTarget.value)}
+      />
+      <SecureTextInput onChangeText={setPassword} />
+      <Button variant="outline" onClick={tapOnLogin}>
+        Se connecter
+      </Button>
+      <Button variant="secondary" onClick={tapOnSignUp}>
+        Créer un compte
+      </Button>
+    </div>
+  );
 };
 
 export default LoginScreen;
