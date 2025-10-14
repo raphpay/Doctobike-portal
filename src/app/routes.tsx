@@ -1,8 +1,8 @@
 import NavigationRoutes from "@/features/navigation/model/NavigationRoutes";
 import { Navigate, Route, Routes } from "react-router-dom";
 // Routes
-import PrivateRoute from "@/features/navigation/screens/components/PrivateRoute";
-import PublicRoute from "@/features/navigation/screens/components/PublicRoute";
+import PrivateRoute from "@/features/navigation/components/PrivateRoute";
+import PublicRoute from "@/features/navigation/components/PublicRoute";
 // Auth
 import LoginScreen from "@/features/auth/screens/LoginScreen";
 import SignUpScreen from "@/features/auth/screens/SignUpScreen";
