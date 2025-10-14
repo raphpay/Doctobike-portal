@@ -20,7 +20,13 @@ export default function useAuth() {
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
-      setUser(session?.user ?? null);
+      if (session?.user) {
+        localStorage.setItem("user_id", session.user.id);
+        setUser(session.user);
+      } else {
+        localStorage.clear();
+        setUser(null);
+      }
     });
 
     return () => {
