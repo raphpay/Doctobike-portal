@@ -65,7 +65,7 @@ describe("createShopCode", () => {
     });
   });
 
-  it("throws an error if no shop is found", async () => {
+  it("throws an error", async () => {
     mockSingle.mockResolvedValueOnce({
       data: null,
       error: new Error("DB error"),
