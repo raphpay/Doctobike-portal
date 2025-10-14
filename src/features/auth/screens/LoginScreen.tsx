@@ -2,6 +2,7 @@ import useLoginScreen from "@/features/auth/hooks/useLoginScreen";
 import SecureTextInput from "@/shared/components/SecureTextInput";
 import { Button } from "@/shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
+import { ToastContainer } from "react-toastify";
 
 const LoginScreen = () => {
   const { setEmail, setPassword, tapOnLogin } = useLoginScreen();
@@ -16,6 +17,8 @@ const LoginScreen = () => {
       <Button variant="outline" onClick={tapOnLogin}>
         Se connecter
       </Button>
+
+      <ToastContainer />
     </div>
   );
 };

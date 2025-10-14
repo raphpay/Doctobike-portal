@@ -1,4 +1,4 @@
-import type { ShopCode } from "@/features/shopCode/model/ShopCode";
+import type ShopCode from "@/features/shopCode/model/ShopCode";
 import { supabase } from "@/lib/supabase";
 
 export async function createShopCode(
@@ -19,8 +19,7 @@ export async function createShopCode(
     .single();
 
   if (error) {
-    console.error("Erreur création ShopCode:", error);
-    return null;
+    throw Error("Erreur lors de la création du code de connexion");
   }
 
   // Transforme le format Supabase -> ton modèle TypeScript

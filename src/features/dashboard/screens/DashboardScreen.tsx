@@ -1,6 +1,7 @@
 import useDashboardScreen from "@/features/dashboard/hooks/useDashboardScreen";
 import { Button } from "@/shared/components/ui/button";
 import { IconCopy } from "@tabler/icons-react";
+import { ToastContainer } from "react-toastify";
 
 const DashboardScreen = () => {
   const { shopCode, handleLogOut, handleShopCodeCreation, handleCopy } =
@@ -25,6 +26,8 @@ const DashboardScreen = () => {
       )}
 
       <Button onClick={handleLogOut}>Déconnexion</Button>
+
+      <ToastContainer />
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { createShopCode } from "@/features/shopCode/api/createShopCode";
 import type ShopCode from "@/features/shopCode/model/ShopCode";
 import useUser from "@/features/users/hooks/useUser";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function useDashboardScreen() {
   const [shopCode, setShopCode] = useState<ShopCode | null>(null);
@@ -17,19 +18,21 @@ export default function useDashboardScreen() {
       try {
         const res = await createShopCode({ shopID: shop.id });
         setShopCode(res);
-        // TODO: Show toast
-        console.log("show toast");
+        toast.success("Code de connexion créé !");
       } catch (error) {
-        // TODO: Show Toast
-        console.log("Error");
+        const message = (error as Error).message ?? "Une erreur s'est produite";
+        toast.error(message);
       }
     } else {
-      // TODO: Show error ( Shop non trouvé )
+      toast.error("Shop non trouvé");
     }
   }
 
   async function handleCopy() {
-    if (shopCode) navigator.clipboard.writeText(shopCode.code);
+    if (shopCode) {
+      navigator.clipboard.writeText(shopCode.code);
+      toast.success("Code copié !");
+    }
   }
 
   return { shopCode, handleLogOut, handleShopCodeCreation, handleCopy };
