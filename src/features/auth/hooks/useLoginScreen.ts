@@ -1,5 +1,6 @@
 import { signIn } from "@/features/auth/api/signIn";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function useLoginScreen() {
   const [email, setEmail] = useState<string>("");
@@ -9,7 +10,8 @@ export default function useLoginScreen() {
     try {
       await signIn(email, password);
     } catch (error) {
-      console.log("Show toast");
+      const message = (error as Error).message ?? "Une erreur s'est produite";
+      toast.error(message);
     }
   }
 
