@@ -4,7 +4,7 @@ import { Button } from "@/shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
 
 const LoginScreen = () => {
-  const { setEmail, setPassword, tapOnLogin, tapOnSignUp } = useLoginScreen();
+  const { setEmail, setPassword, tapOnLogin } = useLoginScreen();
 
   return (
     <div className="flex flex-col gap-4">
@@ -15,9 +15,6 @@ const LoginScreen = () => {
       <SecureTextInput onChangeText={setPassword} />
       <Button variant="outline" onClick={tapOnLogin}>
         Se connecter
-      </Button>
-      <Button variant="secondary" onClick={tapOnSignUp}>
-        Créer un compte
       </Button>
     </div>
   );

@@ -13,7 +13,7 @@ type Props = {
 };
 
 const SecureTextInput = ({ onChangeText }: Props) => {
-  const [isSecure, setIsSecure] = useState<boolean>(false);
+  const [isSecure, setIsSecure] = useState<boolean>(true);
 
   return (
     <InputGroup>

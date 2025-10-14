@@ -1,15 +1,17 @@
+import { signIn } from "@/features/auth/api/signIn";
 import { useState } from "react";
 
 export default function useLoginScreen() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  function tapOnLogin() {
-    console.log("email", email);
-    console.log("password", password);
+  async function tapOnLogin() {
+    try {
+      await signIn(email, password);
+    } catch (error) {
+      console.log("Show toast");
+    }
   }
 
-  function tapOnSignUp() {}
-
-  return { setEmail, setPassword, tapOnLogin, tapOnSignUp };
+  return { setEmail, setPassword, tapOnLogin };
 }
