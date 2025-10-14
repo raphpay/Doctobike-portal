@@ -28,7 +28,9 @@ export default function useDashboardScreen() {
     }
   }
 
-  async function handleCopy() {}
+  async function handleCopy() {
+    if (shopCode) navigator.clipboard.writeText(shopCode.code);
+  }
 
   return { shopCode, handleLogOut, handleShopCodeCreation, handleCopy };
 }
