@@ -22,7 +22,7 @@ export async function createShopCode(
     throw Error("Erreur lors de la création du code de connexion");
   }
 
-  // Transforme le format Supabase -> ton modèle TypeScript
+  // Transform the Supabase format
   return {
     id: inserted.id,
     code: inserted.code,

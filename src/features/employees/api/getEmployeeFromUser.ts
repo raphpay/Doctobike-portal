@@ -6,7 +6,7 @@ export async function getEmployeeFromUser(userID: string): Promise<Employee> {
     .from("employees")
     .select("*")
     .eq("user_id", userID)
-    .maybeSingle();
+    .single();
 
   if (!data) {
     throw new Error("Employé non trouvé");

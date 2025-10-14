@@ -6,7 +6,7 @@ export async function getShop(id: string): Promise<Shop> {
     .from("shops")
     .select("*")
     .eq("id", id)
-    .maybeSingle();
+    .single();
 
   if (!data) {
     throw new Error("Magasin non trouvé");
@@ -17,7 +17,7 @@ export async function getShop(id: string): Promise<Shop> {
     groupID: data.group_id,
     name: data.name,
     address: data.address,
-    phone: data.address,
+    phone: data.phone,
     createdAt: data.created_at,
   };
 
