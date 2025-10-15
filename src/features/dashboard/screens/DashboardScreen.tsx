@@ -14,7 +14,7 @@ const DashboardScreen = () => {
 
   return (
     <div className="flex flex-col justify-center items-center gap-2">
-      <h1>Dashboard screen</h1>
+      <h1>Dashboard</h1>
 
       <Button onClick={handleShopCodeCreation}>Créer un code shop</Button>
 

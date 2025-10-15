@@ -11,6 +11,7 @@ export async function createAppointment(
         user_id: data.userID,
         bike_id: data.bikeID,
         shop_id: data.shopID,
+        scheduled_at: data.scheduledAt,
         notes: data.notes,
       },
     ])
@@ -18,6 +19,7 @@ export async function createAppointment(
     .single();
 
   if (error) {
+    console.log("err", error);
     throw Error("Erreur lors de la création du rendez-vous");
   }
 
