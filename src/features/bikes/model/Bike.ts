@@ -5,4 +5,5 @@ export default interface Bike {
   model: string;
   serialNumber: string;
   purchaseDate: Date;
+  shopID?: string;
 }

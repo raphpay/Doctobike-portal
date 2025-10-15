@@ -23,6 +23,7 @@ export async function fetchBikeFromSerialNumber(
     brand: data.brand,
     serialNumber: data.serial_number,
     purchaseDate: data.purchase_date,
+    shopID: data.shop_id,
   };
 
   return bikeData;
