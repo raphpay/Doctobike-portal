@@ -23,7 +23,6 @@ export default function useUser() {
         const employeeData = await getEmployeeFromUser(data.id);
         if (employeeData) {
           setEmployee(employeeData);
-          console.log("em", employeeData);
           const shopData = await getShop(employeeData.shopID);
           if (shopData) setShop(shopData);
         }

@@ -1,4 +1,6 @@
 import { signOut } from "@/features/auth/api/signOut";
+import { useNavigationStack } from "@/features/navigation/context/NavigationStackContext";
+import NavigationRoutes from "@/features/navigation/model/NavigationRoutes";
 import { createShopCode } from "@/features/shopCode/api/createShopCode";
 import type ShopCode from "@/features/shopCode/model/ShopCode";
 import useUser from "@/features/users/hooks/useUser";
@@ -7,7 +9,12 @@ import { toast } from "react-toastify";
 
 export default function useDashboardScreen() {
   const [shopCode, setShopCode] = useState<ShopCode | null>(null);
+  const { navigate } = useNavigationStack();
   const { shop } = useUser();
+
+  function goToAppointmentCreation() {
+    navigate(NavigationRoutes.CREATE_APPOINTMENT);
+  }
 
   async function handleLogOut() {
     await signOut();
@@ -35,5 +42,11 @@ export default function useDashboardScreen() {
     }
   }
 
-  return { shopCode, handleLogOut, handleShopCodeCreation, handleCopy };
+  return {
+    shopCode,
+    handleLogOut,
+    handleShopCodeCreation,
+    handleCopy,
+    goToAppointmentCreation,
+  };
 }

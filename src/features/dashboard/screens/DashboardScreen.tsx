@@ -4,8 +4,13 @@ import { IconCopy } from "@tabler/icons-react";
 import { ToastContainer } from "react-toastify";
 
 const DashboardScreen = () => {
-  const { shopCode, handleLogOut, handleShopCodeCreation, handleCopy } =
-    useDashboardScreen();
+  const {
+    shopCode,
+    handleLogOut,
+    handleShopCodeCreation,
+    handleCopy,
+    goToAppointmentCreation,
+  } = useDashboardScreen();
 
   return (
     <div className="flex flex-col justify-center items-center gap-2">
@@ -24,6 +29,10 @@ const DashboardScreen = () => {
           <p>Utilisable qu'une seule fois</p>
         </div>
       )}
+
+      <Button onClick={goToAppointmentCreation}>
+        Créer un rendez-vous client
+      </Button>
 
       <Button onClick={handleLogOut}>Déconnexion</Button>
 

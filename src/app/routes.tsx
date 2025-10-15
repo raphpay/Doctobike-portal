@@ -7,6 +7,7 @@ import PublicRoute from "@/features/navigation/components/PublicRoute";
 import LoginScreen from "@/features/auth/screens/LoginScreen";
 import SignUpScreen from "@/features/auth/screens/SignUpScreen";
 // Dashboard
+import CreateAppointment from "@/features/appointments/screens/CreateAppointment";
 import DashboardScreen from "@/features/dashboard/screens/DashboardScreen";
 
 const Navigation: React.FC = () => {
@@ -23,6 +24,11 @@ const Navigation: React.FC = () => {
         <Route
           path={NavigationRoutes.DASHBOARD}
           element={<DashboardScreen />}
+        />
+
+        <Route
+          path={NavigationRoutes.CREATE_APPOINTMENT}
+          element={<CreateAppointment />}
         />
       </Route>
 
