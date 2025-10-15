@@ -4,13 +4,11 @@ import { supabase } from "@/lib/supabase";
 export async function fetchBikeFromSerialNumber(
   serialNumber: string
 ): Promise<Bike | null> {
-  const { data, error } = await supabase
+  const { data } = await supabase
     .from("bikes")
     .select("*")
     .eq("serial_number", serialNumber)
     .single();
-
-  if (error) throw error;
 
   if (!data) {
     throw new Error("Vélo non trouvé");
