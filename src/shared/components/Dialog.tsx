@@ -1,5 +1,6 @@
 import { Button } from "@/shared/components/ui/button";
 import { ButtonWithIcon } from "@/shared/components/ui/button-with-icon";
+import { Label } from "@/shared/components/ui/label";
 import { IconChevronLeft, IconChevronRight } from "@tabler/icons-react";
 import { AnimatePresence, motion } from "motion/react";
 
@@ -61,16 +62,15 @@ const Dialog: React.FC<DialogProps> = (props) => {
         >
           <motion.div
             key="dialog-box"
-            className="bg-white rounded-2xl shadow-xl p-12 w-full max-w-4xl"
+            className="bg-background rounded-2xl shadow-xl p-12 w-full max-w-4xl"
             onClick={handleDialogClick}
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}
             transition={{ duration: 0.3 }}
           >
-            <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">
-              {title}
-            </h2>
+            <Label className="font-semibold text-xl">{title}</Label>
+
             {descriptionChildren ? (
               descriptionChildren
             ) : (
