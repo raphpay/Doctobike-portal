@@ -15,6 +15,8 @@ export default function useCreateAppointmentScreen() {
   const [notes, setNotes] = useState<string>("");
   const [serialNumber, setSerialNumber] = useState<string>("");
   const [isSubmitDisabled, setIsSubmitDisabled] = useState<boolean>(false);
+  const [showCreateBikeDialog, setShowCreateBikeDialog] =
+    useState<boolean>(false);
 
   async function searchBike() {
     let fetched: Bike | null = null;
@@ -86,10 +88,12 @@ export default function useCreateAppointmentScreen() {
     scheduledAt,
     notes,
     isSubmitDisabled,
+    showCreateBikeDialog,
     setSerialNumber,
     setScheduledAt,
     setNotes,
     searchBike,
     submitAppointment,
+    setShowCreateBikeDialog,
   };
 }

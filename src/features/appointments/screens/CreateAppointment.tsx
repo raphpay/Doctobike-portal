@@ -1,3 +1,4 @@
+import CreateBikeDialog from "@/features/appointments/components/CreateBikeDialog";
 import useCreateAppointmentScreen from "@/features/appointments/hooks/useCreateAppointmentScreen";
 import { Button } from "@/shared/components/ui/button";
 import { DateTimePicker } from "@/shared/components/ui/date-time-picker";
@@ -11,11 +12,13 @@ const CreateAppointment = () => {
     bike,
     scheduledAt,
     notes,
+    showCreateBikeDialog,
     setSerialNumber,
     setScheduledAt,
     setNotes,
     searchBike,
     submitAppointment,
+    setShowCreateBikeDialog,
   } = useCreateAppointmentScreen();
 
   return (
@@ -26,6 +29,9 @@ const CreateAppointment = () => {
         onChangeCapture={(e) => setSerialNumber(e.currentTarget.value)}
       />
       <Button onClick={searchBike}>Rechercher</Button>
+      <Button onClick={() => setShowCreateBikeDialog(true)}>
+        Ajouter un vélo
+      </Button>
 
       {bike && (
         <div className="flex flex-col gap-4">
@@ -50,6 +56,12 @@ const CreateAppointment = () => {
           <Button onClick={submitAppointment}>Créer le RDV</Button>
         </div>
       )}
+
+      <CreateBikeDialog
+        isOpen={showCreateBikeDialog}
+        onConfirm={() => setShowCreateBikeDialog(false)}
+        onCancel={() => setShowCreateBikeDialog(false)}
+      />
 
       <ToastContainer />
     </div>
