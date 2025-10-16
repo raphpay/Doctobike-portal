@@ -82,7 +82,7 @@ const Dialog: React.FC<DialogProps> = (props) => {
             <div className="flex justify-between">
               {isCancelAvailable ? (
                 <ButtonWithIcon
-                  icon={<IconChevronLeft />}
+                  leftIcon={<IconChevronLeft />}
                   title={cancelTitle ?? "Annuler"}
                   onClick={() => onCancel && onCancel()}
                 />
@@ -94,7 +94,7 @@ const Dialog: React.FC<DialogProps> = (props) => {
                 <div className="flex flex-row-reverse items-center gap-2">
                   <ButtonWithIcon
                     disabled={isConfirmDisabled}
-                    icon={<IconChevronRight />}
+                    rightIcon={<IconChevronRight />}
                     title={confirmTitle ?? "OK"}
                     onClick={onConfirm}
                   />
