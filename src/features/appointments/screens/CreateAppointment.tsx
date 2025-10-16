@@ -26,7 +26,7 @@ const CreateAppointment = () => {
       <Input
         value={serialNumber}
         placeholder="UHUH37Y7Y"
-        onChangeCapture={(e) => setSerialNumber(e.currentTarget.value)}
+        onChange={(e) => setSerialNumber(e.currentTarget.value)}
       />
       <Button onClick={searchBike}>Rechercher</Button>
       <Button onClick={() => setShowCreateBikeDialog(true)}>
