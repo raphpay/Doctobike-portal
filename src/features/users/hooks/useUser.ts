@@ -1,3 +1,4 @@
+import CacheKeys from "@/features/cache/model/CacheKeys";
 import { getEmployeeFromUser } from "@/features/employees/api/getEmployeeFromUser";
 import type Employee from "@/features/employees/model/Employee";
 import { getShop } from "@/features/shop/api/getShop";
@@ -16,14 +17,13 @@ export default function useUser() {
     let ignore = false;
 
     const init = async () => {
-      const id = localStorage.getItem("user_id");
+      const id = localStorage.getItem(CacheKeys.USER_ID);
       if (id) {
         const data = await getUser(id);
         if (!ignore) setUser(data ?? null);
         const employeeData = await getEmployeeFromUser(data.id);
         if (employeeData) {
           setEmployee(employeeData);
-          console.log("em", employeeData);
           const shopData = await getShop(employeeData.shopID);
           if (shopData) setShop(shopData);
         }

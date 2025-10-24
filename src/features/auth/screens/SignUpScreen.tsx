@@ -31,6 +31,7 @@ import {
   TabsTrigger,
 } from "@/shared/components/ui/tabs";
 import { IconEye } from "@tabler/icons-react";
+import { ToastContainer } from "react-toastify";
 
 const SignUpScreen = () => {
   const {
@@ -248,6 +249,8 @@ const SignUpScreen = () => {
           <p className="text-md opacity-80">Dès maintenant.</p>
         </div>
       </div>
+
+      <ToastContainer />
     </div>
   );
 };

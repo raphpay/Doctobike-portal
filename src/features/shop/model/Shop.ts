@@ -3,6 +3,6 @@ export default interface Shop {
   groupID: string;
   name: string;
   address: string;
-  phone: string;
+  phone?: string;
   createdAt: Date;
 }
