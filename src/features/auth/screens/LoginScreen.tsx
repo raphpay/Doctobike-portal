@@ -21,7 +21,7 @@ import { IconEye } from "@tabler/icons-react";
 import { ToastContainer } from "react-toastify";
 
 const LoginScreen = () => {
-  const { setEmail, setPassword, tapOnLogin } = useLoginScreen();
+  const { setEmail, setPassword, tapOnLogin, tapOnSignUp } = useLoginScreen();
 
   return (
     <div className="flex h-screen w-screen items-center justify-center gap-4 overflow-hidden">
@@ -89,7 +89,7 @@ const LoginScreen = () => {
 
             <div className="flex justify-center items-center">
               <Label>Pas encore de compte ?</Label>
-              <Button variant={"underline"} type="button">
+              <Button onClick={tapOnSignUp} variant={"underline"} type="button">
                 Inscrivez-vous
               </Button>
             </div>

@@ -1,10 +1,18 @@
 import { signIn } from "@/features/auth/api/signIn";
+import { useNavigationStack } from "@/features/navigation/context/NavigationStackContext";
+import NavigationRoutes from "@/features/navigation/model/NavigationRoutes";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
 export default function useLoginScreen() {
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
+  const { navigate } = useNavigationStack();
+
+  function tapOnSignUp() {
+    navigate(NavigationRoutes.SIGN_UP);
+  }
 
   async function tapOnLogin() {
     try {
@@ -15,5 +23,5 @@ export default function useLoginScreen() {
     }
   }
 
-  return { setEmail, setPassword, tapOnLogin };
+  return { setEmail, setPassword, tapOnLogin, tapOnSignUp };
 }
