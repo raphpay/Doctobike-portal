@@ -9,6 +9,8 @@ import SignUpScreen from "@/features/auth/screens/SignUpScreen";
 // Dashboard
 import DashboardScreen from "@/features/dashboard/screens/DashboardScreen";
 import TodoScreen from "../features/todo/TodoScreen";
+import ClientsScreen from "@/features/clients/screens/ClientsScreen";
+import AddClientScreen from "@/features/clients/screens/AddClientScreen";
 
 const Navigation: React.FC = () => {
   return (
@@ -28,7 +30,11 @@ const Navigation: React.FC = () => {
         <Route path={NavigationRoutes.HELP} element={<TodoScreen />} />
         <Route path={NavigationRoutes.ABOUT} element={<TodoScreen />} />
         <Route path={NavigationRoutes.ACCOUNT} element={<TodoScreen />} />
-        <Route path={NavigationRoutes.CLIENTS} element={<TodoScreen />} />
+        <Route path={NavigationRoutes.CLIENTS} element={<ClientsScreen />} />
+        <Route
+          path={NavigationRoutes.ADD_CLIENT}
+          element={<AddClientScreen />}
+        />
         <Route
           path={NavigationRoutes.TECHNICAL_DOCUMENTS}
           element={<TodoScreen />}

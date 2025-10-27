@@ -9,6 +9,7 @@ const NavigationRoutes = {
   ACCOUNT: "/account",
   // Clients
   CLIENTS: "/clients",
+  ADD_CLIENT: "/clients/add",
   // Technical Documents
   TECHNICAL_DOCUMENTS: "/technical-documents",
   // RDV
