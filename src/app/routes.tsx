@@ -8,6 +8,7 @@ import LoginScreen from "@/features/auth/screens/LoginScreen";
 import SignUpScreen from "@/features/auth/screens/SignUpScreen";
 // Dashboard
 import DashboardScreen from "@/features/dashboard/screens/DashboardScreen";
+import TodoScreen from "../features/todo/TodoScreen";
 
 const Navigation: React.FC = () => {
   return (
@@ -24,6 +25,9 @@ const Navigation: React.FC = () => {
           path={NavigationRoutes.DASHBOARD}
           element={<DashboardScreen />}
         />
+        <Route path={NavigationRoutes.HELP} element={<TodoScreen />} />
+        <Route path={NavigationRoutes.ABOUT} element={<TodoScreen />} />
+        <Route path={NavigationRoutes.ACCOUNT} element={<TodoScreen />} />
       </Route>
 
       {/* Default redirect */}
