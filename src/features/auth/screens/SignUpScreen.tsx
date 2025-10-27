@@ -1,5 +1,5 @@
 import SignUpImage from "@/assets/signup.jpg";
-import useSignUpScreen from "@/features/auth/hooks/useSignUpScreen";
+import useSignUpScreen, { Tab } from "@/features/auth/hooks/useSignUpScreen";
 import BackgroundImage from "@/shared/components/ui/background-image";
 import { Button } from "@/shared/components/ui/button";
 import {
@@ -9,7 +9,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/shared/components/ui/card";
-import { Input } from "@/shared/components/ui/input";
 import {
   InputGroup,
   InputGroupAddon,
@@ -35,14 +34,17 @@ import { ToastContainer } from "react-toastify";
 
 const SignUpScreen = () => {
   const {
+    selectedTab,
     setShopName,
     setShopLocation,
     setManagerName,
     setShopCode,
     setEmail,
     setPassword,
+    setEmployeeName,
     tapOnSignUp,
     tapOnLogin,
+    setSelectedTab,
   } = useSignUpScreen();
 
   const ExtraButtons = () => {
@@ -93,15 +95,19 @@ const SignUpScreen = () => {
               </InputOTP>
             </div>
 
-            <div className="flex flex-col text-start gap-4">
-              <Label htmlFor="email">Email</Label>
-              <Input
-                id="email"
-                type="email"
-                onChangeCapture={(e) => setEmail(e.currentTarget.value)}
-                required={true}
-              />
-            </div>
+            <LabelInput
+              label="Nom complet"
+              id="employeeName"
+              onChangeCapture={setEmployeeName}
+            />
+
+            <LabelInput
+              label="Email"
+              htmlFor="email"
+              type="email"
+              id="email"
+              onChangeCapture={setEmail}
+            />
 
             <div className="flex flex-col text-start gap-4">
               <Label htmlFor="password">Mot de passe</Label>
@@ -125,7 +131,7 @@ const SignUpScreen = () => {
               </InputGroup>
             </div>
 
-            <Button onClick={tapOnLogin} type="button">
+            <Button onClick={tapOnSignUp} type="button">
               Se connecter
             </Button>
 
@@ -133,9 +139,9 @@ const SignUpScreen = () => {
           </form>
 
           <div className="flex justify-center items-center">
-            <Label>Pas encore de compte ?</Label>
-            <Button onClick={tapOnSignUp} variant={"underline"} type="button">
-              Inscrivez-vous
+            <Label>Déjà un compte ?</Label>
+            <Button onClick={tapOnLogin} variant={"underline"} type="button">
+              Connectez-vous
             </Button>
           </div>
 
@@ -229,13 +235,18 @@ const SignUpScreen = () => {
       <div className="flex flex-col w-2/5 justify-center items-center gap-6">
         <Label className="text-4xl font-semibold">Doctobike</Label>
 
-        <Tabs defaultValue="shop" className="max-w-[400px]">
+        <Tabs
+          value={selectedTab}
+          onValueChange={setSelectedTab}
+          className="max-w-[400px]"
+        >
           <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="shop">Shop</TabsTrigger>
-            <TabsTrigger value="employee">Employé</TabsTrigger>
+            <TabsTrigger value={Tab.SHOP}>Shop</TabsTrigger>
+            <TabsTrigger value={Tab.EMPLOYEE}>Employé</TabsTrigger>
           </TabsList>
-          <TabsContent value="shop">{ShopCard()}</TabsContent>
-          <TabsContent value="employee">{EmployeeCard()}</TabsContent>
+
+          <TabsContent value={Tab.SHOP}>{ShopCard()}</TabsContent>
+          <TabsContent value={Tab.EMPLOYEE}>{EmployeeCard()}</TabsContent>
         </Tabs>
       </div>
 
