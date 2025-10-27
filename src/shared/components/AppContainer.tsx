@@ -1,19 +1,20 @@
 import { ToastContainer } from "react-toastify";
 import TopBar from "@/shared/components/TopBar";
+import LeftBar from "./LeftBar";
 
 interface Props {
-  content: React.ReactNode;
+  children: React.ReactNode;
 }
 
-export default function Appcontainer({ content }: Props) {
+export default function AppContainer({ children }: Props) {
   return (
     <div className="flex flex-col w-screen h-screen">
       <TopBar />
 
       <div className="w-screen h-screen flex gap-2">
-        <div className="w-1/5 bg-chart-3 flex flex-col p-2">Left Bar</div>
+        <LeftBar />
 
-        {content}
+        <div className="w-full">{children}</div>
       </div>
 
       <ToastContainer />

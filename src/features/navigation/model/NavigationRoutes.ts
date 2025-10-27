@@ -7,6 +7,12 @@ const NavigationRoutes = {
   HELP: "/help",
   ABOUT: "/about",
   ACCOUNT: "/account",
+  // Clients
+  CLIENTS: "/clients",
+  // Technical Documents
+  TECHNICAL_DOCUMENTS: "/technical-documents",
+  // RDV
+  RDV: "/rdv",
 };
 
 export default NavigationRoutes;

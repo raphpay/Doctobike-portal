@@ -28,6 +28,12 @@ const Navigation: React.FC = () => {
         <Route path={NavigationRoutes.HELP} element={<TodoScreen />} />
         <Route path={NavigationRoutes.ABOUT} element={<TodoScreen />} />
         <Route path={NavigationRoutes.ACCOUNT} element={<TodoScreen />} />
+        <Route path={NavigationRoutes.CLIENTS} element={<TodoScreen />} />
+        <Route
+          path={NavigationRoutes.TECHNICAL_DOCUMENTS}
+          element={<TodoScreen />}
+        />
+        <Route path={NavigationRoutes.RDV} element={<TodoScreen />} />
       </Route>
 
       {/* Default redirect */}
