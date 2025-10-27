@@ -1,5 +1,11 @@
 import { isEmailValid } from "@/shared/utils/validation";
 import { useState } from "react";
+import { createClient } from "../api/createClient";
+import useUser from "@/features/users/hooks/useUser";
+import { createBike } from "@/features/bikes/api/createBike";
+import { toast } from "react-toastify";
+import { useNavigationStack } from "@/features/navigation/context/NavigationStackContext";
+import NavigationRoutes from "@/features/navigation/model/NavigationRoutes";
 
 type ClientFormData = {
   email: string;
@@ -22,6 +28,9 @@ type BikeFormErrors = {
 };
 
 export default function useAddClientScreen() {
+  const { shop } = useUser();
+  const { navigate } = useNavigationStack();
+
   const [isSubmitDisabled, setIsSubmitDisabled] = useState<boolean>(false);
   const [clientFormData, setClientFormData] = useState<ClientFormData>({
     email: "",
@@ -88,10 +97,53 @@ export default function useAddClientScreen() {
   }
 
   async function addClient() {
+    setIsSubmitDisabled(true);
     const isClientFormValid = validateClientForm();
-    console.log("valid", isClientFormValid);
     const isBikeFormValid = validateBikeForm();
-    console.log("valid2", isBikeFormValid);
+
+    if (isClientFormValid && isBikeFormValid && shop) {
+      try {
+        const client = await createClient({
+          name: clientFormData.name,
+          email: clientFormData.email,
+          preferedShopID: shop.id,
+        });
+
+        if (client) {
+          await createBike({
+            serialNumber: bikeFormData.serialNumber,
+            brand: bikeFormData.brand,
+            model: bikeFormData.model,
+            purchaseDate: bikeFormData.purchaseDate ?? new Date(),
+            userID: client.id,
+          });
+
+          setClientFormData({
+            email: "",
+            name: "",
+          });
+          setBikeFormData({
+            serialNumber: "",
+            brand: "",
+            model: "",
+            purchaseDate: new Date(),
+          });
+
+          toast.success("Client ajouté avec succès");
+
+          setTimeout(() => {
+            navigate(NavigationRoutes.CLIENTS);
+          }, 2000);
+        }
+      } catch (error) {
+        const message = (error as Error).message;
+        toast.error(message);
+      } finally {
+        setIsSubmitDisabled(false);
+      }
+    } else {
+      setIsSubmitDisabled(false);
+    }
   }
 
   return {
