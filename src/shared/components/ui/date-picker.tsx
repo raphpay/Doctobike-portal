@@ -19,8 +19,10 @@ export default function DatePicker({ date, onChange }: Props) {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(date);
 
   useEffect(() => {
-    onChange(selectedDate);
-  }, [selectedDate, onChange]);
+    if (selectedDate !== date) {
+      onChange(selectedDate);
+    }
+  }, [selectedDate]);
 
   return (
     <Popover>

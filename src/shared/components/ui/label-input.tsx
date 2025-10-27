@@ -1,13 +1,13 @@
 import { Input } from "@/shared/components/ui/input";
 import { Label } from "@/shared/components/ui/label";
-import type { Dispatch, SetStateAction } from "react";
 
 type Props = {
   htmlFor?: string;
   label: string;
   id?: string;
   type?: string;
-  onChangeCapture: Dispatch<SetStateAction<string>>;
+  onChange: (value: string) => void;
+  error?: string;
 };
 
 const LabelInput = ({
@@ -15,7 +15,8 @@ const LabelInput = ({
   label,
   id,
   type = "text",
-  onChangeCapture,
+  onChange,
+  error,
 }: Props) => {
   return (
     <div className="flex flex-col text-start gap-4">
@@ -23,9 +24,10 @@ const LabelInput = ({
       <Input
         id={id}
         type={type}
-        onChangeCapture={(e) => onChangeCapture(e.currentTarget.value)}
+        onChange={(e) => onChange(e.currentTarget.value)}
         required={true}
       />
+      {error && <Label className="text-red-500">{error}</Label>}
     </div>
   );
 };

@@ -7,13 +7,13 @@ import { Label } from "@/shared/components/ui/label";
 
 export default function AddClientScreen() {
   const {
-    purchaseDate,
-    setEmail,
-    setName,
-    setBrand,
-    setModel,
-    setSerialNumber,
-    setPurchaseDate,
+    isSubmitDisabled,
+    bikeFormData,
+    clientErrors,
+    bikeErrors,
+    handleClientFormDataChange,
+    handleBikeFormDataChange,
+    addClient,
   } = useAddClientScreen();
   return (
     <AppContainer>
@@ -27,36 +27,50 @@ export default function AddClientScreen() {
             id="email"
             type="email"
             label="Email du client"
-            onChangeCapture={setEmail}
+            onChange={(val) => handleClientFormDataChange("email", val)}
+            error={clientErrors.email}
           />
           <LabelInput
             id="name"
             label="Nom du client"
-            onChangeCapture={setName}
+            onChange={(val) => handleClientFormDataChange("name", val)}
+            error={clientErrors.name}
           />
           <LabelInput
             id="brand"
             label="Marque du vélo"
-            onChangeCapture={setBrand}
+            onChange={(val) => handleBikeFormDataChange("brand", val)}
+            error={bikeErrors.brand}
           />
           <LabelInput
             id="model"
             label="Modèle du vélo"
-            onChangeCapture={setModel}
+            onChange={(val) => handleBikeFormDataChange("model", val)}
+            error={bikeErrors.model}
           />
           <LabelInput
             id="serialNumber"
             label="Numéro de série du vélo"
-            onChangeCapture={setSerialNumber}
+            onChange={(val) => handleBikeFormDataChange("serialNumber", val)}
+            error={bikeErrors.serialNumber}
           />
           <div className="flex flex-col gap-2 items-start">
             <Label>Date d'achat</Label>
-            <DatePicker date={purchaseDate} onChange={setPurchaseDate} />
+            <DatePicker
+              date={
+                bikeFormData.purchaseDate
+                  ? new Date(bikeFormData.purchaseDate)
+                  : undefined
+              }
+              onChange={(val) => handleBikeFormDataChange("purchaseDate", val)}
+            />
           </div>
         </form>
 
         <div className="flex w-full justify-end">
-          <Button>Valider</Button>
+          <Button disabled={isSubmitDisabled} onClick={addClient}>
+            Valider
+          </Button>
         </div>
       </div>
     </AppContainer>
