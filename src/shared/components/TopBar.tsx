@@ -7,7 +7,12 @@ export default function TopBar() {
 
   return (
     <div className="w-screen bg-chart-2 flex justify-between items-center p-4">
-      <h1 className="font-semibold text-4xl">Doctobike</h1>
+      <h1
+        onClick={() => handleNavigation(NavigationRoutes.DASHBOARD)}
+        className="cursor-pointer font-semibold text-4xl"
+      >
+        Doctobike
+      </h1>
 
       <div className="flex items-center gap-4">
         <TextButton
