@@ -1,11 +1,12 @@
 import { isEmailValid } from "@/shared/utils/validation";
 import { useState } from "react";
 import { createClient } from "../api/createClient";
-import useUser from "@/features/users/hooks/useUser";
+
 import { createBike } from "@/features/bikes/api/createBike";
 import { toast } from "react-toastify";
 import { useNavigationStack } from "@/features/navigation/context/NavigationStackContext";
 import NavigationRoutes from "@/features/navigation/model/NavigationRoutes";
+import { useShopQuery } from "@/features/shop/hooks/useShop";
 
 type ClientFormData = {
   email: string;
@@ -28,7 +29,7 @@ type BikeFormErrors = {
 };
 
 export default function useAddClientScreen() {
-  const { shop } = useUser();
+  const { data: shop } = useShopQuery();
   const { navigate } = useNavigationStack();
 
   const [isSubmitDisabled, setIsSubmitDisabled] = useState<boolean>(false);

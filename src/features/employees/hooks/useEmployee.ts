@@ -1,14 +1,14 @@
-import type User from "@/features/users/model/User";
 import { useQuery } from "@tanstack/react-query";
 import CacheKeys from "@/features/cache/model/CacheKeys";
-import { getUser } from "../api/getUser";
+import { getEmployeeFromUser } from "../api/getEmployeeFromUser";
+import type Employee from "../model/Employee";
 
-export function useUserQuery() {
-  const query = useQuery<User, Error>({
-    queryKey: [CacheKeys.USER],
+export function useEmployeeQuery() {
+  const query = useQuery<Employee, Error>({
+    queryKey: [CacheKeys.EMPLOYEE],
     queryFn: () => {
       const id = localStorage.getItem(CacheKeys.USER_ID);
-      return getUser(id ?? "");
+      return getEmployeeFromUser(id ?? "");
     },
   });
 
