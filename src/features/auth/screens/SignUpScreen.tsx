@@ -10,12 +10,6 @@ import {
   CardTitle,
 } from "@/shared/components/ui/card";
 import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-} from "@/shared/components/ui/input-group";
-import {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
@@ -30,7 +24,6 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/shared/components/ui/tabs";
-import { IconEye } from "@tabler/icons-react";
 import { ToastContainer } from "react-toastify";
 
 const SignUpScreen = () => {
