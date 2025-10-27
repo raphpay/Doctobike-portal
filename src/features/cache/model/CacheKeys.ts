@@ -1,4 +1,5 @@
 enum CacheKeys {
   USER_ID = "userID",
+  SHOP_ID = "shopID",
 }
 export default CacheKeys;

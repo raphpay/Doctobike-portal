@@ -25,7 +25,10 @@ export default function useUser() {
         if (employeeData) {
           setEmployee(employeeData);
           const shopData = await getShop(employeeData.shopID);
-          if (shopData) setShop(shopData);
+          if (shopData) {
+            localStorage.setItem(CacheKeys.SHOP_ID, shopData.id);
+            setShop(shopData);
+          }
         }
       } else {
         setUser(null);
