@@ -23,6 +23,7 @@ import {
 } from "@/shared/components/ui/input-otp";
 import { Label } from "@/shared/components/ui/label";
 import LabelInput from "@/shared/components/ui/label-input";
+import SecureInput from "@/shared/components/ui/secure-input";
 import {
   Tabs,
   TabsContent,
@@ -109,27 +110,11 @@ const SignUpScreen = () => {
               onChangeCapture={setEmail}
             />
 
-            <div className="flex flex-col text-start gap-4">
-              <Label htmlFor="password">Mot de passe</Label>
-              <InputGroup>
-                <InputGroupInput
-                  type="password"
-                  onChangeCapture={(e) => setPassword(e.currentTarget.value)}
-                />
-                <InputGroupAddon align="inline-end">
-                  <InputGroupButton
-                    aria-label="Copy"
-                    title="Copy"
-                    size="icon-xs"
-                    onClick={() => {
-                      console.log("log");
-                    }}
-                  >
-                    <IconEye />
-                  </InputGroupButton>
-                </InputGroupAddon>
-              </InputGroup>
-            </div>
+            <SecureInput
+              id="password"
+              label="Mot de passe"
+              onChange={setPassword}
+            />
 
             <Button onClick={tapOnSignUp} type="button">
               Se connecter
@@ -189,27 +174,11 @@ const SignUpScreen = () => {
               onChangeCapture={setEmail}
             />
 
-            <div className="flex flex-col text-start gap-4">
-              <Label htmlFor="password">Mot de passe</Label>
-              <InputGroup>
-                <InputGroupInput
-                  type="password"
-                  onChangeCapture={(e) => setPassword(e.currentTarget.value)}
-                />
-                <InputGroupAddon align="inline-end">
-                  <InputGroupButton
-                    aria-label="Copy"
-                    title="Copy"
-                    size="icon-xs"
-                    onClick={() => {
-                      console.log("log");
-                    }}
-                  >
-                    <IconEye />
-                  </InputGroupButton>
-                </InputGroupAddon>
-              </InputGroup>
-            </div>
+            <SecureInput
+              id="shop-password"
+              label="Mot de passe"
+              onChange={setPassword}
+            />
 
             <Button onClick={tapOnSignUp} type="button">
               Commencer
