@@ -7,7 +7,11 @@ export default function ClientsScreen() {
   const { clients, loading, tapOnAddClient } = useClientsScreen();
 
   if (loading) {
-    return <div>Chargement des clients...</div>;
+    return (
+      <AppContainer>
+        <p>Chargement des clients...</p>
+      </AppContainer>
+    );
   }
 
   return (
