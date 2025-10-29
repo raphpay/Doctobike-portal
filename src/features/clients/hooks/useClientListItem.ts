@@ -11,7 +11,10 @@ export default function useClientListItem({ client }: ClientListItemProps) {
   const [bikes, setBikes] = useState<Bike[]>([]);
 
   function navigateToClient() {
-    navigate(NavigationRoutes.CLIENT, client.name, { id: client.id });
+    navigate(NavigationRoutes.CLIENT, client.name, {
+      client: client,
+      bikes: bikes,
+    });
   }
 
   async function fetchBikes() {
