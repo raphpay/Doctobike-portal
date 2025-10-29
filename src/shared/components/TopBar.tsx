@@ -6,7 +6,7 @@ export default function TopBar() {
   const { handleNavigation } = useTopBar();
 
   return (
-    <div className="w-screen bg-chart-2 flex justify-between items-center p-4">
+    <div className="w-screen bg-secondary-background border-black border-b-4 flex justify-between items-center p-4">
       <h1
         onClick={() => handleNavigation(NavigationRoutes.DASHBOARD)}
         className="cursor-pointer font-semibold text-4xl"
