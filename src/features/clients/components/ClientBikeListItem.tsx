@@ -1,13 +1,14 @@
 import type Bike from "@/features/bikes/model/Bike";
 import { Button } from "@/shared/components/ui/button";
-import { formatDate } from "@/shared/utils/dates";
+import useClientBikeListItem from "../hooks/useClientBikeListItem";
 
-interface ClientBikeListItemProps {
+export interface ClientBikeListItemProps {
   bike: Bike;
 }
 
 export default function ClientBikeListItem({ bike }: ClientBikeListItemProps) {
-  const bikePurchaseDate = formatDate(bike.purchaseDate);
+  const { bikePurchaseDate, navigateToBikeRDV, navigateToBikeDocs } =
+    useClientBikeListItem({ bike });
 
   return (
     <div
@@ -22,8 +23,12 @@ export default function ClientBikeListItem({ bike }: ClientBikeListItemProps) {
       </div>
 
       <div className="flex w-full gap-4">
-        <Button className="w-full">Voir la doc</Button>
-        <Button variant="secondary">RDV</Button>
+        <Button onClick={navigateToBikeDocs} className="w-full">
+          Voir la doc
+        </Button>
+        <Button onClick={navigateToBikeRDV} variant="secondary">
+          RDV
+        </Button>
       </div>
     </div>
   );
