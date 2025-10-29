@@ -37,6 +37,7 @@ const Navigation: React.FC = () => {
           path={NavigationRoutes.ADD_CLIENT}
           element={<AddClientScreen />}
         />
+        <Route path={NavigationRoutes.ADD_BIKE} element={<TodoScreen />} />
         <Route
           path={NavigationRoutes.TECHNICAL_DOCUMENTS}
           element={<TodoScreen />}
