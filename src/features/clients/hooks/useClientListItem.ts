@@ -2,9 +2,20 @@ import { useEffect, useState } from "react";
 import type Bike from "@/features/bikes/model/Bike";
 import type { ClientListItemProps } from "../components/ClientListItem";
 import { getClientBikes } from "@/features/bikes/api/getClientBikes";
+import { useNavigationStack } from "@/features/navigation/context/NavigationStackContext";
+import NavigationRoutes from "@/features/navigation/model/NavigationRoutes";
 
 export default function useClientListItem({ client }: ClientListItemProps) {
+  const { navigate } = useNavigationStack();
+
   const [bikes, setBikes] = useState<Bike[]>([]);
+
+  function navigateToClient() {
+    navigate(NavigationRoutes.CLIENT, client.name, {
+      client: client,
+      bikes: bikes,
+    });
+  }
 
   async function fetchBikes() {
     try {
@@ -22,5 +33,5 @@ export default function useClientListItem({ client }: ClientListItemProps) {
     fetchBikes();
   }, [client]);
 
-  return { bikes };
+  return { bikes, navigateToClient };
 }
