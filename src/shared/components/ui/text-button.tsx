@@ -7,7 +7,7 @@ export default function TextButton({ title, onClick }: TextButtonProps) {
   return (
     <button
       onClick={onClick}
-      className="hover:underline cursor-pointer text-2xl"
+      className="hover:underline cursor-pointer text-lg"
     >
       {title}
     </button>

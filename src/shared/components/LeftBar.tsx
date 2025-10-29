@@ -1,25 +1,26 @@
 import TextButton from "./ui/text-button";
 import useLeftBar from "./hooks/useLeftBar";
 import NavigationRoutes from "@/features/navigation/model/NavigationRoutes";
+import LeftBarButton from "./ui/leftbar-button";
 
 export default function LeftBar() {
   const { handleNavigation } = useLeftBar();
 
   return (
-    <div className="w-1/5 bg-chart-3 flex flex-col p-2 gap-4">
-      <TextButton
+    <div className="w-1/5 bg-secondary-background border-b border-r-6 border-black flex flex-col">
+      <LeftBarButton
         title="Home"
         onClick={() => handleNavigation(NavigationRoutes.DASHBOARD)}
       />
-      <TextButton
+      <LeftBarButton
         title="Clients"
         onClick={() => handleNavigation(NavigationRoutes.CLIENTS)}
       />
-      <TextButton
+      <LeftBarButton
         title="Documents techniques"
         onClick={() => handleNavigation(NavigationRoutes.TECHNICAL_DOCUMENTS)}
       />
-      <TextButton
+      <LeftBarButton
         title="Rendez-vous"
         onClick={() => handleNavigation(NavigationRoutes.RDV)}
       />
