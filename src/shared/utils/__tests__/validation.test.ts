@@ -20,7 +20,7 @@ describe("isEmailValid", () => {
     const invalidEmails = [
       "plainaddress",
       "@missingusername.com",
-      "username@.com",Ê
+      "username@.com",
       "username@domain",
       "username@domain..com",
       "username@domain,com",
