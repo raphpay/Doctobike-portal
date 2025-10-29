@@ -1,13 +1,13 @@
 import { signOut } from "@/features/auth/api/signOut";
+import { useShopQuery } from "@/features/shop/hooks/useShop";
 import { createShopCode } from "@/features/shopCode/api/createShopCode";
 import type ShopCode from "@/features/shopCode/model/ShopCode";
-import useUser from "@/features/users/hooks/useUser";
 import { useState } from "react";
 import { toast } from "react-toastify";
 
 export default function useDashboardScreen() {
   const [shopCode, setShopCode] = useState<ShopCode | null>(null);
-  const { shop } = useUser();
+  const { data: shop } = useShopQuery();
 
   async function handleLogOut() {
     await signOut();

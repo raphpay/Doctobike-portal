@@ -3,4 +3,6 @@ export default interface User {
   email: string;
   role: "client" | "employee" | "brand";
   name: string;
+  preferedShopID?: string;
+  createdAt: Date;
 }

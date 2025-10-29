@@ -16,7 +16,8 @@ const buttonVariants = cva(
           "bg-secondary-background text-foreground border-2 border-border shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none",
         reverse:
           "text-main-foreground bg-main border-2 border-border hover:translate-x-reverseBoxShadowX hover:translate-y-reverseBoxShadowY hover:shadow-shadow",
-
+        secondary:
+          "text-main-foreground bg-chart-2 border-2 border-border shadow-shadow hover:translate-x-boxShadowX hover:translate-y-boxShadowY hover:shadow-none",
         underline:
           "bg-transparent border-0 text-foreground font-medium hover:underline hover:decoration-2 hover:decoration-black focus-visible:underline focus-visible:decoration-2 focus-visible:decoration-black",
       },
@@ -31,7 +32,7 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 );
 
 function Button({

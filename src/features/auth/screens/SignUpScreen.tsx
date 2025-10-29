@@ -10,12 +10,6 @@ import {
   CardTitle,
 } from "@/shared/components/ui/card";
 import {
-  InputGroup,
-  InputGroupAddon,
-  InputGroupButton,
-  InputGroupInput,
-} from "@/shared/components/ui/input-group";
-import {
   InputOTP,
   InputOTPGroup,
   InputOTPSeparator,
@@ -30,7 +24,6 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/shared/components/ui/tabs";
-import { IconEye } from "@tabler/icons-react";
 import { ToastContainer } from "react-toastify";
 
 const SignUpScreen = () => {
@@ -151,19 +144,19 @@ const SignUpScreen = () => {
             <LabelInput
               htmlFor="shopName"
               label="Nom du shop / organisation"
-              onChangeCapture={setShopName}
+              onChange={setShopName}
             />
 
             <LabelInput
               htmlFor="shopLocation"
               label="Localisation"
-              onChangeCapture={setShopLocation}
+              onChange={setShopLocation}
             />
 
             <LabelInput
               htmlFor="managerName"
               label="Nom du manager"
-              onChangeCapture={setManagerName}
+              onChange={setManagerName}
             />
 
             <LabelInput
@@ -171,7 +164,7 @@ const SignUpScreen = () => {
               label="Email"
               id="email"
               type="email"
-              onChangeCapture={setEmail}
+              onChange={setEmail}
             />
 
             <SecureInput
