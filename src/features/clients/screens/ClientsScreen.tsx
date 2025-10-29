@@ -21,11 +21,14 @@ export default function ClientsScreen() {
           <Button onClick={tapOnAddClient}>Ajouter un client</Button>
         </div>
 
-        <div className="grid grid-cols-4">
+        <div className="grid grid-cols-4 gap-8">
           {clients &&
+            clients.length > 0 &&
             clients.map((client, index) => (
               <ClientListItem key={index} client={client} />
             ))}
+
+          {!clients || (clients.length === 0 && <p>Aucun client trouvé</p>)}
         </div>
       </div>
     </AppContainer>

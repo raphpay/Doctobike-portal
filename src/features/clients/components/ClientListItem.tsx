@@ -23,7 +23,7 @@ export default function ClientListItem({ client }: ClientListItemProps) {
           <div className="text-xs text-muted-foreground">{client.email}</div>
         </div>
 
-        {bikes && (
+        {bikes && bikes.length > 0 && (
           <div className="flex w-full">
             <p>
               {bikes[0].brand} - {bikes[0].model}
