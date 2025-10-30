@@ -6,7 +6,18 @@ import type Bike from "@/features/bikes/model/Bike";
 import ClientBikeListItem from "../components/ClientBikeListItem";
 
 export default function ClientScreen() {
-  const { client, bikes, goBack, goToBikeCreation } = useClientScreen();
+  const {
+    client,
+    isModifying,
+    bikes,
+    goBack,
+    goToBikeCreation,
+    setIsModifying,
+    newEmail,
+    saveNewMail,
+    handleEmailChange,
+    isEmailDifferent,
+  } = useClientScreen();
 
   return (
     <AppContainer>
@@ -21,14 +32,25 @@ export default function ClientScreen() {
             <LabelInput
               label="Email"
               type="text"
-              disabled={true}
-              value={client.email}
-              onChange={() => console.log("")}
+              disabled={!isModifying}
+              value={isModifying ? newEmail : client.email}
+              onChange={(val) => handleEmailChange(val)}
             />
 
-            <Button className="w-fit" variant="secondary">
-              Modifier
-            </Button>
+            <div className="flex gap-4">
+              <Button
+                onClick={() => setIsModifying(!isModifying)}
+                className="w-fit"
+                variant="secondary"
+              >
+                {isModifying ? "Annuler" : "Modifier"}
+              </Button>
+              {isModifying && (
+                <Button disabled={!isEmailDifferent} onClick={saveNewMail}>
+                  Sauvegarder
+                </Button>
+              )}
+            </div>
           </div>
 
           <div className="grid grid-cols-4">
