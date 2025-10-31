@@ -44,6 +44,7 @@ const Navigation: React.FC = () => {
           element={<TodoScreen />}
         />
         <Route path={NavigationRoutes.RDV} element={<RDVsScreen />} />
+        <Route path={NavigationRoutes.CLIENT_RDV} element={<TodoScreen />} />
       </Route>
 
       {/* Default redirect */}

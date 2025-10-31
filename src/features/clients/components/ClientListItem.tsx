@@ -7,7 +7,9 @@ export interface ClientListItemProps {
 }
 
 export default function ClientListItem({ client }: ClientListItemProps) {
-  const { bikes, navigateToClient } = useClientListItem({ client });
+  const { bikes, navigateToClient, tapOnAppointment } = useClientListItem({
+    client,
+  });
 
   return (
     <div className="relative text-main-foreground bg-secondary-background border-2 border-border shadow-shadow shadow-border flex p-4">
@@ -36,7 +38,11 @@ export default function ClientListItem({ client }: ClientListItemProps) {
           <Button onClick={navigateToClient} className="w-2/4">
             Plus d'infos
           </Button>
-          <Button className="w-1/4" variant="secondary">
+          <Button
+            onClick={tapOnAppointment}
+            className="w-1/4"
+            variant="secondary"
+          >
             RDV
           </Button>
         </div>

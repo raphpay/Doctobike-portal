@@ -17,6 +17,13 @@ export default function useClientListItem({ client }: ClientListItemProps) {
     });
   }
 
+  function tapOnAppointment() {
+    navigate(NavigationRoutes.CLIENT_RDV, `${client.name} - RDV`, {
+      id: client.id,
+      bikes: bikes,
+    });
+  }
+
   async function fetchBikes() {
     try {
       const bikes = await getClientBikes(client.id);
@@ -33,5 +40,5 @@ export default function useClientListItem({ client }: ClientListItemProps) {
     fetchBikes();
   }, [client]);
 
-  return { bikes, navigateToClient };
+  return { bikes, navigateToClient, tapOnAppointment };
 }

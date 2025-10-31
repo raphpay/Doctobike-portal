@@ -15,6 +15,7 @@ const NavigationRoutes = {
   TECHNICAL_DOCUMENTS: "/technical-documents",
   // RDV
   RDV: "/rdv",
+  CLIENT_RDV: "/rdv-client",
   // Bikes
   ADD_BIKE: "/bikes/add",
 };
