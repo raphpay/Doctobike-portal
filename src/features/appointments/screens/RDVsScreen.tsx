@@ -3,8 +3,10 @@ import AppContainer from "@/shared/components/AppContainer";
 import { useAppointmentsQuery } from "../hooks/useAppointmentsQuery";
 import TopMainContainerBar from "@/shared/components/TopMainContainerBar";
 import RDVListItem from "../components/RDVListItem";
+import useRDVsScreen from "../hooks/useRDVsScreen";
 
 export default function RDVsScreen() {
+  const { createRDV } = useRDVsScreen();
   const {
     data: shop,
     isLoading: isShopLoading,
@@ -29,7 +31,7 @@ export default function RDVsScreen() {
       <TopMainContainerBar
         title="Rendez-Vous"
         buttonTitle="Créer un RDV"
-        action={() => console.log("Create appointment")}
+        action={createRDV}
       />
       <div className="flex flex-col gap-4">
         {appointments?.map((appointment, index) => (
