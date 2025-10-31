@@ -12,6 +12,7 @@ import TodoScreen from "../features/todo/TodoScreen";
 import ClientsScreen from "@/features/clients/screens/ClientsScreen";
 import AddClientScreen from "@/features/clients/screens/AddClientScreen";
 import ClientScreen from "@/features/clients/screens/ClientScreen";
+import RDVsScreen from "@/features/appointments/screens/RDVsScreen";
 
 const Navigation: React.FC = () => {
   return (
@@ -42,7 +43,7 @@ const Navigation: React.FC = () => {
           path={NavigationRoutes.TECHNICAL_DOCUMENTS}
           element={<TodoScreen />}
         />
-        <Route path={NavigationRoutes.RDV} element={<TodoScreen />} />
+        <Route path={NavigationRoutes.RDV} element={<RDVsScreen />} />
       </Route>
 
       {/* Default redirect */}
