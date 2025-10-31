@@ -10,10 +10,18 @@ export interface RDVListItemProps {
 }
 
 export default function RDVListItem({ rdv }: RDVListItemProps) {
-  const { data, error, isLoading, user, bike, scheduledAt, goToDocs } =
-    useRDVListItem({
-      rdv,
-    });
+  const {
+    data,
+    error,
+    isLoading,
+    user,
+    bike,
+    scheduledAt,
+    goToDocs,
+    tapOnUpdateStatus,
+  } = useRDVListItem({
+    rdv,
+  });
 
   if (error) {
     return (
@@ -61,6 +69,35 @@ export default function RDVListItem({ rdv }: RDVListItemProps) {
     }
   };
 
+  const StatusButton = () => {
+    switch (data.status) {
+      case AppointmentStatus.TODO:
+        return (
+          <Button onClick={tapOnUpdateStatus} variant={"secondary"}>
+            En cours
+          </Button>
+        );
+      case AppointmentStatus.COMPLETED:
+        return (
+          <Button onClick={tapOnUpdateStatus} variant={"secondary"} disabled>
+            Fini
+          </Button>
+        );
+      case AppointmentStatus.IN_PROGRESS:
+        return (
+          <Button onClick={tapOnUpdateStatus} variant={"secondary"}>
+            Fait
+          </Button>
+        );
+      default:
+        return (
+          <Button onClick={tapOnUpdateStatus} variant={"secondary"}>
+            Fait
+          </Button>
+        );
+    }
+  };
+
   return (
     <Card>
       <div className="relative flex flex-col w-full justify-start text-start gap-2">
@@ -78,10 +115,10 @@ export default function RDVListItem({ rdv }: RDVListItemProps) {
         {data.notes && <p className="font-normal">{data.notes}</p>}
 
         <div className="flex justify-between">
-          <Button onClick={goToDocs} className="w-3/4">
+          <Button onClick={goToDocs} className="min-w-2/4 max-w-3/4">
             Voir la doc
           </Button>
-          <Button variant={"secondary"}>Fait</Button>
+          <StatusButton />
         </div>
       </div>
     </Card>
