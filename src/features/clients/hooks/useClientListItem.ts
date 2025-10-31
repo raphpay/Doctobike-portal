@@ -12,7 +12,7 @@ export default function useClientListItem({ client }: ClientListItemProps) {
 
   function navigateToClient() {
     navigate(NavigationRoutes.CLIENT, client.name, {
-      client: client,
+      id: client.id,
       bikes: bikes,
     });
   }
