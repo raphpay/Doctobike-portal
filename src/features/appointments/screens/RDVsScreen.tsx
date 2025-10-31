@@ -3,6 +3,7 @@ import AppContainer from "@/shared/components/AppContainer";
 import { useAppointmentsQuery } from "../hooks/useAppointmentsQuery";
 import TopMainContainerBar from "@/shared/components/TopMainContainerBar";
 import Card from "@/shared/components/Card";
+import RDVListItem from "../components/RDVLitsItem";
 
 export default function RDVsScreen() {
   const {
@@ -32,14 +33,12 @@ export default function RDVsScreen() {
         action={() => console.log("Create appointment")}
       />
       <div className="flex flex-col gap-4">
-        {appointments?.map((appointment) => (
-          <div key={appointment.id} className="flex items-center gap-4">
-            <Card>
-              <div className="flex flex-col">
-                <p className="text-sm font-medium">{appointment.id}</p>
-                <p className="text-sm text-gray-500">{appointment.shopID}</p>
-              </div>
-            </Card>
+        {appointments?.map((appointment, index) => (
+          <div
+            key={appointment.id}
+            className="grid grid-cols-4 items-center gap-4"
+          >
+            <RDVListItem key={index} rdv={appointment} />
           </div>
         ))}
       </div>
