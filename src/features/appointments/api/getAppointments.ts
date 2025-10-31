@@ -1,5 +1,6 @@
 import { supabase } from "@/lib/supabase";
 import type Appointment from "../model/Appointment";
+import type { AppointmentStatus } from "../model/Appointment";
 
 export async function getAppointments(shopID: string): Promise<Appointment[]> {
   const { data, error } = await supabase
@@ -17,7 +18,7 @@ export async function getAppointments(shopID: string): Promise<Appointment[]> {
     shopID: item.shop_id,
     bikeID: item.bike_id,
     scheduledAt: new Date(item.scheduled_at),
-    status: item.status,
+    status: item.status as AppointmentStatus,
     notes: item.notes ?? undefined, // Convert null to undefined
     createdAt: new Date(item.created_at),
   }));

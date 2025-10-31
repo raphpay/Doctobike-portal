@@ -2,6 +2,8 @@ import type Appointment from "../model/Appointment";
 import Card from "@/shared/components/Card";
 import useRDVListItem from "../hooks/useRDVListItem";
 import { Button } from "@/shared/components/ui/button";
+import { AppointmentStatus } from "../model/Appointment";
+import Tag from "@/shared/components/Tag";
 
 export interface RDVListItemProps {
   rdv: Appointment;
@@ -45,9 +47,24 @@ export default function RDVListItem({ rdv }: RDVListItemProps) {
     );
   }
 
+  const StatusTag = () => {
+    switch (data.status) {
+      case AppointmentStatus.TODO:
+        return <Tag text="A faire" variant="warning"></Tag>;
+      case AppointmentStatus.COMPLETED:
+        return <Tag text="Fait" variant="success"></Tag>;
+      case AppointmentStatus.IN_PROGRESS:
+        return <Tag text="En cours" variant="error"></Tag>;
+      default:
+        return <Tag text="A faire" variant="warning"></Tag>;
+    }
+  };
+
   return (
     <Card>
-      <div className="flex flex-col w-full justify-start text-start gap-2">
+      <div className="relative flex flex-col w-full justify-start text-start gap-2">
+        <StatusTag />
+
         {user && <p className="text-lg font-semibold">{user.name}</p>}
         <div className="flex gap-2">
           {bike && (

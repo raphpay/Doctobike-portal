@@ -2,8 +2,7 @@ import { useShopQuery } from "@/features/shop/hooks/useShop";
 import AppContainer from "@/shared/components/AppContainer";
 import { useAppointmentsQuery } from "../hooks/useAppointmentsQuery";
 import TopMainContainerBar from "@/shared/components/TopMainContainerBar";
-import Card from "@/shared/components/Card";
-import RDVListItem from "../components/RDVLitsItem";
+import RDVListItem from "../components/RDVListItem";
 
 export default function RDVsScreen() {
   const {

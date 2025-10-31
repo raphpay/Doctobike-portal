@@ -1,5 +1,5 @@
 import { getUser } from "@/features/users/api/getUser";
-import type { RDVListItemProps } from "../components/RDVLitsItem";
+import type { RDVListItemProps } from "../components/RDVListItem";
 import { useAppointmentQuery } from "./useApppointmentQuery";
 import { useEffect, useState } from "react";
 import type User from "@/features/users/model/User";

@@ -4,7 +4,13 @@ export default interface Appointment {
   shopID: string;
   bikeID: string;
   scheduledAt: Date;
-  status: "todo" | "in-progress" | "completed";
+  status: AppointmentStatus;
   notes?: string;
   createdAt: Date;
+}
+
+export enum AppointmentStatus {
+  TODO = "todo",
+  IN_PROGRESS = "in-progress",
+  COMPLETED = "completed",
 }
