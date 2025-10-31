@@ -6,12 +6,20 @@ import type User from "@/features/users/model/User";
 import type Bike from "@/features/bikes/model/Bike";
 import { getBike } from "@/features/bikes/api/getBike";
 import { formatDate } from "@/shared/utils/dates";
+import { useNavigationStack } from "@/features/navigation/context/NavigationStackContext";
+import NavigationRoutes from "@/features/navigation/model/NavigationRoutes";
 
 export default function useRDVListItem({ rdv }: RDVListItemProps) {
+  const { navigate } = useNavigationStack();
+
   const { data, error, isLoading } = useAppointmentQuery(rdv.id);
   const [user, setUser] = useState<User | null>(null);
   const [bike, setBike] = useState<Bike | null>(null);
   const [scheduledAt, setScheduledAt] = useState<string | null>(null);
+
+  function goToDocs() {
+    navigate(NavigationRoutes.TECHNICAL_DOCUMENTS, "", { bike });
+  }
 
   async function loadUser() {
     if (data && data.userID) {
@@ -44,5 +52,5 @@ export default function useRDVListItem({ rdv }: RDVListItemProps) {
     loadScheduledAt();
   }, [data, error, isLoading]);
 
-  return { data, error, isLoading, user, bike, scheduledAt };
+  return { data, error, isLoading, user, bike, scheduledAt, goToDocs };
 }

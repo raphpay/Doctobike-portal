@@ -10,9 +10,10 @@ export interface RDVListItemProps {
 }
 
 export default function RDVListItem({ rdv }: RDVListItemProps) {
-  const { data, error, isLoading, user, bike, scheduledAt } = useRDVListItem({
-    rdv,
-  });
+  const { data, error, isLoading, user, bike, scheduledAt, goToDocs } =
+    useRDVListItem({
+      rdv,
+    });
 
   if (error) {
     return (
@@ -77,7 +78,9 @@ export default function RDVListItem({ rdv }: RDVListItemProps) {
         {data.notes && <p className="font-normal">{data.notes}</p>}
 
         <div className="flex justify-between">
-          <Button className="w-3/4">Voir la doc</Button>
+          <Button onClick={goToDocs} className="w-3/4">
+            Voir la doc
+          </Button>
           <Button variant={"secondary"}>Fait</Button>
         </div>
       </div>
