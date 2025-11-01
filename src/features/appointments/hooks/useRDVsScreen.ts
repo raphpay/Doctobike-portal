@@ -4,10 +4,7 @@ import NavigationRoutes from "@/features/navigation/model/NavigationRoutes";
 export default function useRDVsScreen() {
   const { navigate } = useNavigationStack();
   function createRDV() {
-    navigate(NavigationRoutes.CLIENT_RDV, "", {
-      id: undefined,
-      bike: undefined,
-    });
+    navigate(NavigationRoutes.SELECT_CLIENT_RDV);
   }
 
   return { createRDV };

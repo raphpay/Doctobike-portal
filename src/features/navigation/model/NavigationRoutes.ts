@@ -16,6 +16,7 @@ const NavigationRoutes = {
   // RDV
   RDV: "/rdv",
   CLIENT_RDV: "/rdv-client",
+  SELECT_CLIENT_RDV: "/rdv/select-client",
   // Bikes
   ADD_BIKE: "/bikes/add",
 };

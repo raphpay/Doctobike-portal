@@ -13,6 +13,8 @@ import ClientsScreen from "@/features/clients/screens/ClientsScreen";
 import AddClientScreen from "@/features/clients/screens/AddClientScreen";
 import ClientScreen from "@/features/clients/screens/ClientScreen";
 import RDVsScreen from "@/features/appointments/screens/RDVsScreen";
+import CreateRDVScreen from "@/features/appointments/screens/CreateRDVScreen";
+import SelectClientScreen from "@/features/appointments/screens/SelectClientScreen";
 
 const Navigation: React.FC = () => {
   return (
@@ -44,7 +46,14 @@ const Navigation: React.FC = () => {
           element={<TodoScreen />}
         />
         <Route path={NavigationRoutes.RDV} element={<RDVsScreen />} />
-        <Route path={NavigationRoutes.CLIENT_RDV} element={<TodoScreen />} />
+        <Route
+          path={NavigationRoutes.CLIENT_RDV}
+          element={<CreateRDVScreen />}
+        />
+        <Route
+          path={NavigationRoutes.SELECT_CLIENT_RDV}
+          element={<SelectClientScreen />}
+        />
       </Route>
 
       {/* Default redirect */}
