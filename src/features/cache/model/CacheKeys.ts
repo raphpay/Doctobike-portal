@@ -5,5 +5,6 @@ enum CacheKeys {
   CLIENT = "client",
   USER_ID = "userID",
   SHOP_ID = "shopID",
+  BRANDS = "brands",
 }
 export default CacheKeys;

@@ -12,7 +12,9 @@ import TodoScreen from "../features/todo/TodoScreen";
 import ClientsScreen from "@/features/clients/screens/ClientsScreen";
 import AddClientScreen from "@/features/clients/screens/AddClientScreen";
 import ClientScreen from "@/features/clients/screens/ClientScreen";
-import TechnicalDocsScreen from "@/features/documents/screens/TechnicalDocsScreen";
+import TechnicalDocsScreen from "@/features/documents/screens/BrandsPage";
+import BrandsPage from "@/features/documents/screens/BrandsPage";
+import ModelsPage from "@/features/documents/screens/ModelsPage";
 
 const Navigation: React.FC = () => {
   return (
@@ -39,10 +41,16 @@ const Navigation: React.FC = () => {
           element={<AddClientScreen />}
         />
         <Route path={NavigationRoutes.ADD_BIKE} element={<TodoScreen />} />
+
         <Route
           path={NavigationRoutes.TECHNICAL_DOCUMENTS}
-          element={<TechnicalDocsScreen />}
+          element={<BrandsPage />}
         />
+        <Route
+          path={`${NavigationRoutes.TECHNICAL_DOCUMENTS}/:brand`}
+          element={<ModelsPage />}
+        />
+
         <Route path={NavigationRoutes.RDV} element={<TodoScreen />} />
       </Route>
 
