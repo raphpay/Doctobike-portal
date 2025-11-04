@@ -15,6 +15,7 @@ import ClientScreen from "@/features/clients/screens/ClientScreen";
 import TechnicalDocsScreen from "@/features/documents/screens/BrandsPage";
 import BrandsPage from "@/features/documents/screens/BrandsPage";
 import ModelsPage from "@/features/documents/screens/ModelsPage";
+import YearsPage from "@/features/documents/screens/YearsPage";
 
 const Navigation: React.FC = () => {
   return (
@@ -49,6 +50,10 @@ const Navigation: React.FC = () => {
         <Route
           path={`${NavigationRoutes.TECHNICAL_DOCUMENTS}/:brand`}
           element={<ModelsPage />}
+        />
+        <Route
+          path={`${NavigationRoutes.TECHNICAL_DOCUMENTS}/:brand/:model`}
+          element={<YearsPageﬂ   />}
         />
 
         <Route path={NavigationRoutes.RDV} element={<TodoScreen />} />
