@@ -53,7 +53,7 @@ const Navigation: React.FC = () => {
         />
         <Route
           path={`${NavigationRoutes.TECHNICAL_DOCUMENTS}/:brand/:model`}
-          element={<YearsPageﬂ   />}
+          element={<YearsPage />}
         />
 
         <Route path={NavigationRoutes.RDV} element={<TodoScreen />} />
