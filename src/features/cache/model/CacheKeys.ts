@@ -8,5 +8,6 @@ enum CacheKeys {
   BRANDS = "brands",
   MODELS = "models",
   YEARS = "years",
+  DOCUMENTS = "documents",
 }
 export default CacheKeys;
