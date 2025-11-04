@@ -1,9 +1,10 @@
 import AppContainer from "@/shared/components/AppContainer";
 import { useBrandsQuery } from "../hooks/useBrandsQuery";
 import { Button } from "@/shared/components/ui/button";
+import useBrandsPage from "../hooks/useBrandsPage";
 
 export default function BrandsPage() {
-  const { data: brands, error, isLoading, selectBrand } = useBrandsQuery();
+  const { data: brands, error, isLoading, selectBrand } = useBrandsPage();
 
   if (isLoading) return <AppContainer>Chargement des marques...</AppContainer>;
 
