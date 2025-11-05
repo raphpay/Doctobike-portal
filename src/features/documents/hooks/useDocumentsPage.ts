@@ -2,6 +2,7 @@ import { useDocumentsQuery } from "./useDocumentsQuery";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import type { Document } from "../models/Document";
+import { getDocumentSignedUrl } from "../api/getDocumentSignedUrl";
 
 export default function useDocumentsPage() {
   const { brand, model, year } = useParams<{
@@ -21,8 +22,15 @@ export default function useDocumentsPage() {
 
   const totalPages = totalCount ? Math.ceil(totalCount / 10) : 0;
 
-  function selectDocument(document: Document) {
-    console.log("display doc", document);
+  async function selectDocument(document: Document) {
+    const documentId = document.id;
+    try {
+      const url = await getDocumentSignedUrl(documentId);
+      window.open(url, "_blank");
+    } catch (err) {
+      console.error("Erreur lors de la génération du lien:", err);
+      alert("Impossible d'ouvrir le document");
+    }
   }
 
   function nextPage() {
@@ -40,9 +48,6 @@ export default function useDocumentsPage() {
     error,
     isLoading,
     selectDocument,
-    brand,
-    model,
-    year,
     nextPage,
     previousPage,
   };

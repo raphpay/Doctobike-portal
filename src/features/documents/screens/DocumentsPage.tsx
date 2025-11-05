@@ -11,9 +11,6 @@ export default function DocumentsPage() {
     error,
     isLoading,
     selectDocument,
-    brand,
-    model,
-    year,
   } = useDocumentsPage();
 
   if (isLoading) {
