@@ -2,6 +2,7 @@ import useModelsPage from "../hooks/useModelsPage";
 import { Button } from "@/shared/components/ui/button";
 import SimplifiedAppContainer from "@/shared/components/SimplifiedAppContainer";
 import Breadcrumb from "@/shared/components/Breadcrumb";
+import BackButton from "@/shared/components/ui/back-button";
 
 export default function ModelsPage() {
   const {
@@ -66,6 +67,8 @@ export default function ModelsPage() {
             Suivant
           </button>
         </div>
+
+        <BackButton />
       </div>
     </SimplifiedAppContainer>
   );

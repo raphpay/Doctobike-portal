@@ -2,6 +2,7 @@ import useYearsPage from "../hooks/useYearsPage";
 import { Button } from "@/shared/components/ui/button";
 import SimplifiedAppContainer from "@/shared/components/SimplifiedAppContainer";
 import Breadcrumb from "@/shared/components/Breadcrumb";
+import BackButton from "@/shared/components/ui/back-button";
 
 export default function YearsPage() {
   const {
@@ -69,6 +70,8 @@ export default function YearsPage() {
           </button>
         </div>
       )}
+
+      <BackButton />
     </SimplifiedAppContainer>
   );
 }

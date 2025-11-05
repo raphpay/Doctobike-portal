@@ -4,6 +4,7 @@ import { Button } from "@/shared/components/ui/button";
 import { IconFileTypePdf } from "@tabler/icons-react";
 import SimplifiedAppContainer from "@/shared/components/SimplifiedAppContainer";
 import Breadcrumb from "@/shared/components/Breadcrumb";
+import BackButton from "@/shared/components/ui/back-button";
 
 export default function DocumentsPage() {
   const {
@@ -50,6 +51,8 @@ export default function DocumentsPage() {
             </Button>
           ))}
       </div>
+
+      <BackButton />
     </SimplifiedAppContainer>
   );
 }
