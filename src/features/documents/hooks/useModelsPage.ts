@@ -18,7 +18,10 @@ export default function useModelsPage() {
   const totalPages = totalCount ? Math.ceil(totalCount / 10) : 0;
 
   function selectModel(model: string) {
-    navigate(`${NavigationRoutes.TECHNICAL_DOCUMENTS}/${brand}/${model}`);
+    navigate(
+      `${NavigationRoutes.TECHNICAL_DOCUMENTS}/${brand}/${model}`,
+      `${model}`,
+    );
   }
 
   function nextPage() {

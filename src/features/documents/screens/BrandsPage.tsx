@@ -1,23 +1,28 @@
-import AppContainer from "@/shared/components/AppContainer";
-import { useBrandsQuery } from "../hooks/useBrandsQuery";
 import { Button } from "@/shared/components/ui/button";
 import useBrandsPage from "../hooks/useBrandsPage";
+import SimplifiedAppContainer from "@/shared/components/SimplifiedAppContainer";
+import Breadcrumb from "@/shared/components/Breadcrumb";
 
 export default function BrandsPage() {
   const { data: brands, error, isLoading, selectBrand } = useBrandsPage();
 
-  if (isLoading) return <AppContainer>Chargement des marques...</AppContainer>;
+  if (isLoading)
+    return (
+      <SimplifiedAppContainer>Chargement des marques...</SimplifiedAppContainer>
+    );
 
   if (error)
-    return <AppContainer>Erreur lors du chargement des marques</AppContainer>;
+    return (
+      <SimplifiedAppContainer>
+        Erreur lors du chargement des marques
+      </SimplifiedAppContainer>
+    );
 
   return (
-    <AppContainer>
-      <div className="flex flex-col h-full p-4 gap-4">
-        <h1 className="text-start text-3xl font-bold">
-          Documents techniques - Marques
-        </h1>
+    <SimplifiedAppContainer>
+      <Breadcrumb />
 
+      <div className="flex flex-col h-full p-4 gap-4">
         <div className="grid grid-cols-4 gap-4">
           {brands &&
             brands.map((brand, index) => (
@@ -32,6 +37,6 @@ export default function BrandsPage() {
             ))}
         </div>
       </div>
-    </AppContainer>
+    </SimplifiedAppContainer>
   );
 }

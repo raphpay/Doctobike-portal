@@ -2,6 +2,8 @@ import AppContainer from "@/shared/components/AppContainer";
 import useDocumentsPage from "../hooks/useDocumentsPage";
 import { Button } from "@/shared/components/ui/button";
 import { IconFileTypePdf } from "@tabler/icons-react";
+import SimplifiedAppContainer from "@/shared/components/SimplifiedAppContainer";
+import Breadcrumb from "@/shared/components/Breadcrumb";
 
 export default function DocumentsPage() {
   const {
@@ -15,35 +17,39 @@ export default function DocumentsPage() {
   } = useDocumentsPage();
 
   if (isLoading) {
-    return <AppContainer>Chargement des documents...</AppContainer>;
+    return (
+      <SimplifiedAppContainer>
+        Chargement des documents...
+      </SimplifiedAppContainer>
+    );
   }
 
   if (error) {
-    return <AppContainer>Erreur lors du chargement des documents</AppContainer>;
+    return (
+      <SimplifiedAppContainer>
+        Erreur lors du chargement des documents
+      </SimplifiedAppContainer>
+    );
   }
 
   return (
-    <AppContainer>
-      <div className="flex flex-col p-4 gap-4">
-        <h1 className="text-start text-3xl font-bold">
-          Documents techniques - {brand} - {model} - {year}
-        </h1>
+    <SimplifiedAppContainer>
+      <Breadcrumb />
 
-        <div className="grid grid-cols-4 gap-4">
-          {documents &&
-            documents.map((document) => (
-              <Button
-                onClick={() => selectDocument(document)}
-                key={document.id}
-                className="flex gap-2"
-                variant={"neutral"}
-              >
-                <IconFileTypePdf />
-                <p className="text-md font-normal">{document.name}</p>
-              </Button>
-            ))}
-        </div>
+      <div className="grid grid-cols-4 gap-4">
+        {documents &&
+          documents.map((document) => (
+            <Button
+              onClick={() => selectDocument(document)}
+              key={document.id}
+              className="flex gap-2"
+              variant={"neutral"}
+            >
+              <IconFileTypePdf />
+              <p className="text-md font-normal">{document.name}</p>
+            </Button>
+          ))}
       </div>
-    </AppContainer>
+    </SimplifiedAppContainer>
   );
 }

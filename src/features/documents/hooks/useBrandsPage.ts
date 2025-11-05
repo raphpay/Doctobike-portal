@@ -8,7 +8,10 @@ export default function useBrandsPage() {
   const { navigate } = useNavigationStack();
 
   function selectBrand(brand: Brand) {
-    navigate(`${NavigationRoutes.TECHNICAL_DOCUMENTS}/${brand.brand}`);
+    navigate(
+      `${NavigationRoutes.TECHNICAL_DOCUMENTS}/${brand.brand}`,
+      `${brand.brand}`,
+    );
   }
 
   return { data, error, isLoading, selectBrand };

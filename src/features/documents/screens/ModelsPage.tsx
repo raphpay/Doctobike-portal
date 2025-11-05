@@ -1,6 +1,7 @@
-import AppContainer from "@/shared/components/AppContainer";
 import useModelsPage from "../hooks/useModelsPage";
 import { Button } from "@/shared/components/ui/button";
+import SimplifiedAppContainer from "@/shared/components/SimplifiedAppContainer";
+import Breadcrumb from "@/shared/components/Breadcrumb";
 
 export default function ModelsPage() {
   const {
@@ -15,15 +16,23 @@ export default function ModelsPage() {
   } = useModelsPage();
 
   if (isLoading) {
-    return <AppContainer>Chargement des modèles...</AppContainer>;
+    return (
+      <SimplifiedAppContainer>Chargement des modèles...</SimplifiedAppContainer>
+    );
   }
 
   if (error) {
-    return <AppContainer>Erreur lors du chargement des modèles</AppContainer>;
+    return (
+      <SimplifiedAppContainer>
+        Erreur lors du chargement des modèles
+      </SimplifiedAppContainer>
+    );
   }
 
   return (
-    <AppContainer>
+    <SimplifiedAppContainer>
+      <Breadcrumb />
+
       <div className="flex flex-col p-4 gap-4">
         <div className="grid grid-cols-4 gap-4">
           {models &&
@@ -58,6 +67,6 @@ export default function ModelsPage() {
           </button>
         </div>
       </div>
-    </AppContainer>
+    </SimplifiedAppContainer>
   );
 }

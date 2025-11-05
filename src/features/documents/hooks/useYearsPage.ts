@@ -21,6 +21,7 @@ export default function useYearsPage() {
   function selectYear(year: Year) {
     navigate(
       `${NavigationRoutes.TECHNICAL_DOCUMENTS}/${brand}/${model}/${year.year}`,
+      `${year.year}`,
     );
   }
 
