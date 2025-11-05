@@ -12,7 +12,6 @@ import TodoScreen from "../features/todo/TodoScreen";
 import ClientsScreen from "@/features/clients/screens/ClientsScreen";
 import AddClientScreen from "@/features/clients/screens/AddClientScreen";
 import ClientScreen from "@/features/clients/screens/ClientScreen";
-import TechnicalDocsScreen from "@/features/documents/screens/BrandsPage";
 import BrandsPage from "@/features/documents/screens/BrandsPage";
 import ModelsPage from "@/features/documents/screens/ModelsPage";
 import YearsPage from "@/features/documents/screens/YearsPage";
@@ -29,6 +28,13 @@ const Navigation: React.FC = () => {
 
       {/* Private routes */}
       <Route element={<PrivateRoute />}>
+        <Route
+          index
+          element={
+            <Navigate to={NavigationRoutes.TECHNICAL_DOCUMENTS} replace />
+          }
+        />
+
         <Route
           path={NavigationRoutes.DASHBOARD}
           element={<DashboardScreen />}
