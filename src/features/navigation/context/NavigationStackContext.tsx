@@ -28,8 +28,8 @@ export const NavigationStackProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const initialScreen: StackItem = {
-    path: "dashboard",
-    title: "Dashboard",
+    path: "technical-documents",
+    title: "Documents techniques",
   };
   const [stack, setStack] = useState<StackItem[]>([initialScreen]);
   const routerNavigate = useNavigate();
@@ -77,7 +77,7 @@ export const useNavigationStack = (): NavigationStackContextType => {
   const context = useContext(NavigationStackContext);
   if (!context)
     throw new Error(
-      "useNavigationStack must be used within NavigationStackProvider"
+      "useNavigationStack must be used within NavigationStackProvider",
     );
   return context;
 };
