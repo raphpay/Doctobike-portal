@@ -48,25 +48,27 @@ export default function ModelsPage() {
             ))}
         </div>
 
-        <div className="flex w-full justify-center gap-4">
-          <button
-            className="cursor-pointer"
-            onClick={previousPage}
-            disabled={page === 1}
-          >
-            Précédent
-          </button>
-          <span>
-            Page {page} sur {totalPages}
-          </span>
-          <button
-            className="cursor-pointer"
-            onClick={nextPage}
-            disabled={page === totalPages}
-          >
-            Suivant
-          </button>
-        </div>
+        {totalPages > 1 && (
+          <div className="flex w-full justify-center gap-4">
+            <button
+              className="cursor-pointer"
+              onClick={previousPage}
+              disabled={page === 1}
+            >
+              Précédent
+            </button>
+            <span>
+              Page {page} sur {totalPages}
+            </span>
+            <button
+              className="cursor-pointer"
+              onClick={nextPage}
+              disabled={page === totalPages}
+            >
+              Suivant
+            </button>
+          </div>
+        )}
 
         <BackButton />
       </div>

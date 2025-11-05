@@ -1,4 +1,3 @@
-import AppContainer from "@/shared/components/AppContainer";
 import useDocumentsPage from "../hooks/useDocumentsPage";
 import { Button } from "@/shared/components/ui/button";
 import { IconFileTypePdf } from "@tabler/icons-react";
