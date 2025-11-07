@@ -12,7 +12,7 @@ vi.mock("@/lib/supabase", () => {
 });
 
 describe("getBrands", () => {
-  const mockRpc = vi.fn();
+  // const mockRpc = vi.fn();
   const mockOrder = vi.fn();
 
   beforeEach(() => {

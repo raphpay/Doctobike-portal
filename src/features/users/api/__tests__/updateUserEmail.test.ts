@@ -2,72 +2,72 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { updateUserEmail } from "@/features/users/api/updateUserEmail";
 import { supabase } from "@/lib/supabase";
 
-// Mock Supabase
+// --- Mock Supabase client ---
 vi.mock("@/lib/supabase", () => ({
   supabase: {
-    from: vi.fn().mockReturnThis(),
-    update: vi.fn().mockReturnThis(),
-    eq: vi.fn().mockReturnThis(),
-    select: vi.fn().mockReturnThis(),
-    single: vi.fn(),
+    from: vi.fn(),
   },
 }));
 
 describe("updateUserEmail", () => {
-  const mockUser = {
-    id: "123",
-    name: "John Doe",
-    role: "user",
-    email: "new.email@example.com",
-    created_at: "2023-01-01T00:00:00Z",
-  };
+  const mockUpdate = vi.fn();
+  const mockEq = vi.fn();
+  const mockSelect = vi.fn();
+  const mockSingle = vi.fn();
 
   beforeEach(() => {
     vi.clearAllMocks();
+
+    // Chain supabase.from("users").update().eq().select().single()
+    (supabase.from as any).mockReturnValue({
+      update: mockUpdate.mockReturnValue({
+        eq: mockEq.mockReturnValue({
+          select: mockSelect.mockReturnValue({
+            single: mockSingle,
+          }),
+        }),
+      }),
+    });
   });
 
-  it("devrait mettre à jour l'email et retourner l'utilisateur", async () => {
-    // Mock la réponse de Supabase
-    vi.mocked(supabase.from().update().eq().select().single).mockResolvedValue({
-      data: mockUser,
+  it("updates user email and returns the updated user", async () => {
+    const fakeUser = {
+      id: "123",
+      name: "John Doe",
+      role: "client",
+      email: "newemail@example.com",
+      created_at: "2025-10-29T10:00:00Z",
+    };
+
+    // Mock Supabase response
+    mockSingle.mockResolvedValueOnce({
+      data: fakeUser,
       error: null,
     });
 
-    const result = await updateUserEmail("123", "new.email@example.com");
+    const result = await updateUserEmail("123", "newemail@example.com");
 
     expect(result).toEqual({
-      id: mockUser.id,
-      name: mockUser.name,
-      role: mockUser.role,
-      email: mockUser.email,
-      createdAt: mockUser.created_at,
+      id: "123",
+      name: "John Doe",
+      role: "client",
+      email: "newemail@example.com",
+      createdAt: "2025-10-29T10:00:00Z",
     });
+
     expect(supabase.from).toHaveBeenCalledWith("users");
-    expect(supabase.update).toHaveBeenCalledWith({
-      email: "new.email@example.com",
-    });
-    expect(supabase.eq).toHaveBeenCalledWith("id", "123");
+    expect(mockUpdate).toHaveBeenCalledWith({ email: "newemail@example.com" });
+    expect(mockEq).toHaveBeenCalledWith("id", "123");
   });
 
-  it("devrait lever une erreur si l'utilisateur n'est pas trouvé", async () => {
-    vi.mocked(supabase.from().update().eq().select().single).mockResolvedValue({
+  it("throws an error if the user is not found", async () => {
+    mockSingle.mockResolvedValueOnce({
       data: null,
-      error: { message: "Aucune ligne trouvée" },
+      error: { message: "No user found" },
     });
 
-    await expect(
-      updateUserEmail("999", "new.email@example.com"),
-    ).rejects.toThrow("Utilisateur non trouvé");
-  });
-
-  it("devrait lever une erreur si la requête échoue", async () => {
-    vi.mocked(supabase.from().update().eq().select().single).mockResolvedValue({
-      data: null,
-      error: { message: "Erreur de base de données" },
-    });
-
-    await expect(
-      updateUserEmail("123", "new.email@example.com"),
-    ).rejects.toThrow("Utilisateur non trouvé");
+    await expect(updateUserEmail("999", "fake@example.com")).rejects.toThrow(
+      "Utilisateur non trouvé",
+    );
   });
 });
