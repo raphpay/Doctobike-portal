@@ -1,3 +1,4 @@
+import { signOut } from "@/features/auth/api/signOut";
 import { useNavigationStack } from "@/features/navigation/context/NavigationStackContext";
 
 export default function useTopBar() {
@@ -7,5 +8,9 @@ export default function useTopBar() {
     navigate(destination);
   }
 
-  return { handleNavigation };
+  async function handleLogOut() {
+    await signOut();
+  }
+
+  return { handleNavigation, handleLogOut };
 }
