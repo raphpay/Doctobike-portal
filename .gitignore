@@ -25,6 +25,7 @@ dist-ssr
 
 # Environment files
 .env
+.env.example
 
 # Coverage files
 coverage/*
