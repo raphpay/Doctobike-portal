@@ -3,18 +3,20 @@ import useTopBar from "./hooks/useTopBar";
 import TextButton from "./ui/text-button";
 
 export default function TopBar() {
-  const { handleNavigation } = useTopBar();
+  const { handleNavigation, handleLogOut } = useTopBar();
 
   return (
     <div className="w-screen bg-secondary-background border-black border-b-4 flex justify-between items-center p-4">
       <h1
-        onClick={() => handleNavigation(NavigationRoutes.DASHBOARD)}
+        onClick={() => handleNavigation(NavigationRoutes.TECHNICAL_DOCUMENTS)}
         className="cursor-pointer font-semibold text-4xl"
       >
         Doctobike
       </h1>
 
-      <div className="flex items-center gap-4">
+      <TextButton title="Déconnexion" onClick={handleLogOut} />
+
+      {/*<div className="flex items-center gap-4">
         <TextButton
           title="Aide"
           onClick={() => handleNavigation(NavigationRoutes.HELP)}
@@ -27,7 +29,7 @@ export default function TopBar() {
           title="Compte"
           onClick={() => handleNavigation(NavigationRoutes.ACCOUNT)}
         />
-      </div>
+      </div>*/}
     </div>
   );
 }

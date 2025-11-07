@@ -7,11 +7,11 @@ import PublicRoute from "@/features/navigation/components/PublicRoute";
 import LoginScreen from "@/features/auth/screens/LoginScreen";
 import SignUpScreen from "@/features/auth/screens/SignUpScreen";
 // Dashboard
-import DashboardScreen from "@/features/dashboard/screens/DashboardScreen";
-import TodoScreen from "../features/todo/TodoScreen";
-import ClientsScreen from "@/features/clients/screens/ClientsScreen";
-import AddClientScreen from "@/features/clients/screens/AddClientScreen";
-import ClientScreen from "@/features/clients/screens/ClientScreen";
+// import DashboardScreen from "@/features/dashboard/screens/DashboardScreen";
+// import TodoScreen from "../features/todo/TodoScreen";
+// import ClientsScreen from "@/features/clients/screens/ClientsScreen";
+// import AddClientScreen from "@/features/clients/screens/AddClientScreen";
+// import ClientScreen from "@/features/clients/screens/ClientScreen";
 import BrandsPage from "@/features/documents/screens/BrandsPage";
 import ModelsPage from "@/features/documents/screens/ModelsPage";
 import YearsPage from "@/features/documents/screens/YearsPage";
@@ -28,14 +28,7 @@ const Navigation: React.FC = () => {
 
       {/* Private routes */}
       <Route element={<PrivateRoute />}>
-        <Route
-          index
-          element={
-            <Navigate to={NavigationRoutes.TECHNICAL_DOCUMENTS} replace />
-          }
-        />
-
-        <Route
+        {/*<Route
           path={NavigationRoutes.DASHBOARD}
           element={<DashboardScreen />}
         />
@@ -48,7 +41,7 @@ const Navigation: React.FC = () => {
           path={NavigationRoutes.ADD_CLIENT}
           element={<AddClientScreen />}
         />
-        <Route path={NavigationRoutes.ADD_BIKE} element={<TodoScreen />} />
+        <Route path={NavigationRoutes.ADD_BIKE} element={<TodoScreen />} />*/}
 
         <Route
           path={NavigationRoutes.TECHNICAL_DOCUMENTS}
@@ -67,7 +60,7 @@ const Navigation: React.FC = () => {
           element={<DocumentsPage />}
         />
 
-        <Route path={NavigationRoutes.RDV} element={<TodoScreen />} />
+        {/*<Route path={NavigationRoutes.RDV} element={<TodoScreen />} />*/}
       </Route>
 
       {/* Default redirect */}
