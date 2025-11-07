@@ -23,5 +23,6 @@ export async function updateUser(
     name: inserted.name,
     role: inserted.role,
     email: inserted.email,
+    createdAt: inserted.created_at,
   };
 }
