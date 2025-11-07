@@ -14,8 +14,6 @@ export default function YearsPage() {
     nextPage,
     previousPage,
     page,
-    brand,
-    model,
   } = useYearsPage();
 
   if (isLoading) {

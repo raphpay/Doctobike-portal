@@ -71,10 +71,7 @@ const SignUpScreen = () => {
           <form className="flex flex-col gap-4">
             <div className="flex flex-col text-start gap-4 w-full">
               <Label htmlFor="email">Code shop</Label>
-              <InputOTP
-                maxLength={6}
-                onChangeCapture={(e) => setShopCode(e.currentTarget.value)}
-              >
+              <InputOTP maxLength={6} onChange={(val) => setShopCode(val)}>
                 <InputOTPGroup>
                   <InputOTPSlot index={0} />
                   <InputOTPSlot index={1} />
@@ -92,7 +89,7 @@ const SignUpScreen = () => {
             <LabelInput
               label="Nom complet"
               id="employeeName"
-              onChangeCapture={setEmployeeName}
+              onChange={setEmployeeName}
             />
 
             <LabelInput
@@ -100,7 +97,7 @@ const SignUpScreen = () => {
               htmlFor="email"
               type="email"
               id="email"
-              onChangeCapture={setEmail}
+              onChange={setEmail}
             />
 
             <SecureInput

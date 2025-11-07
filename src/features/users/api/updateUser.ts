@@ -3,7 +3,7 @@ import { supabase } from "@/lib/supabase";
 
 export async function updateUser(
   id: string,
-  data: Omit<User, "id" | "email">
+  data: Omit<User, "id" | "email" | "createdAt">,
 ): Promise<User> {
   const { data: inserted, error } = await supabase
     .from("users")
@@ -23,5 +23,6 @@ export async function updateUser(
     name: inserted.name,
     role: inserted.role,
     email: inserted.email,
+    createdAt: inserted.created_at,
   };
 }

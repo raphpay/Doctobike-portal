@@ -35,8 +35,8 @@ export default function useSignUpScreen() {
     navigate(NavigationRoutes.LOGIN);
   }
 
-  function handleError(error: any) {
-    const message = (error as Error).message;
+  function handleError(error: Error) {
+    const message = error.message;
     toast.error(message);
   }
 
@@ -47,7 +47,7 @@ export default function useSignUpScreen() {
     try {
       shop = await createShop({ name: shopName, address: shopLocation });
     } catch (error) {
-      handleError(error);
+      handleError(error as Error);
     }
 
     if (!shop) {
@@ -59,7 +59,7 @@ export default function useSignUpScreen() {
       const res = await signUp(email, password);
       supabaseUser = res.user;
     } catch (error) {
-      handleError(error);
+      handleError(error as Error);
     }
 
     if (!supabaseUser) {
@@ -73,7 +73,7 @@ export default function useSignUpScreen() {
         role: "employee",
       });
     } catch (error) {
-      handleError(error);
+      handleError(error as Error);
     }
 
     if (!user) {
@@ -91,7 +91,7 @@ export default function useSignUpScreen() {
 
       localStorage.setItem(CacheKeys.USER_ID, user.id);
     } catch (error) {
-      handleError(error);
+      handleError(error as Error);
     }
   }
 
@@ -102,7 +102,7 @@ export default function useSignUpScreen() {
     try {
       codeData = await checkValidity(shopCode);
     } catch (error) {
-      handleError(error);
+      handleError(error as Error);
       return;
     }
 
@@ -116,7 +116,7 @@ export default function useSignUpScreen() {
       const res = await signUp(email, password);
       supabaseUser = res.user;
     } catch (error) {
-      handleError(error);
+      handleError(error as Error);
       return;
     }
 
@@ -134,7 +134,7 @@ export default function useSignUpScreen() {
         fullName: employeeName,
       });
     } catch (error) {
-      handleError(error);
+      handleError(error as Error);
       return;
     }
 
@@ -145,7 +145,7 @@ export default function useSignUpScreen() {
         role: "employee",
       });
     } catch (error) {
-      handleError(error);
+      handleError(error as Error);
       return;
     }
 
@@ -153,7 +153,7 @@ export default function useSignUpScreen() {
     try {
       await markAsUsed(codeData);
     } catch (error) {
-      handleError(error);
+      handleError(error as Error);
       return;
     }
   }

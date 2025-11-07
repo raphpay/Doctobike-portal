@@ -1,6 +1,4 @@
 import AppContainer from "@/shared/components/AppContainer";
-import Appcontainer from "@/shared/components/AppContainer";
-import * as React from "react";
 
 export default function TodoScreen() {
   return (
